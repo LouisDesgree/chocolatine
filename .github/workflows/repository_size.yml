@@ -1,0 +1,10 @@
+name: repository_size
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with: fet
+      - run: "echo"
+      - run: "du -skh --exclude=.git"
