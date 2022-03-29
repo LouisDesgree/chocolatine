@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with: fet
+        with:
+         fetch-depth: '0'
       - run: "echo"
       - run: "du -skh --exclude=.git"
