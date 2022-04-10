@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: check repo
-      - run: UNWANTED_FILES=$ (find . -type f -not -path "./git/*" -wholename "*tmp/*" -or -name "*~" -or -name "*.o" -or -name "*.so" -or -name "*.gcno" -or -name "*.gdca" -or -name "*.gcov" -or -name "*pain_au_chocolat*")
+      - run: | UNWANTED_FILES=$ (find . -type f -not -path "./git/*" -wholename "*tmp/*" -or -name "*~" -or -name "*.o" -or -name "*.so" -or -name "*.gcno" -or -name "*.gdca" -or -name "*.gcov" -or -name "*pain_au_chocolat*")
         for FLIES in $UNWANTED_FILES;
           do
             echo "::error file=$
