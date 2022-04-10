@@ -61,8 +61,8 @@ jobs:
     name: "check repository clean"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - id: check_repository_cleanliness
+      -uses: actions/checkout@v3
+      -id: check_repository_cleanliness
       run: |
         UNWANTED_FILES=$(find . -type f -not -path "./git/*" -wholename "*tmp/*" 
 -or -name "*~" -or -name "*.o" -or -name "*.gcno" -or -name "*.gcda" 
