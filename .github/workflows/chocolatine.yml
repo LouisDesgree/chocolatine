@@ -23,13 +23,13 @@ jobs:
           echo "::error file=$
           {FILE#./}, tile=UNwanted file detected::$
           {FILE#./}"
-      done
-      if [[ -n $UNWANTED_FILES]]
-      then
-        exit 1
-      else
-        echo No unwanted files
-      fi
+        done
+        if [[ -n $UNWANTED_FILES]]
+        then
+          exit 1
+        else
+          echo No unwanted files
+        fi
 
   push_to_mirror:
     needs: [check_if_compil]
