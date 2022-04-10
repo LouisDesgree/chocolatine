@@ -12,7 +12,8 @@ jobs:
     name: "check repository clean"
     runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v3
+      -uses:
+        actions/checkout@v3
       -id: check repo
       run:
         UNWANTED_FILES=$
