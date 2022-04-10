@@ -1,11 +1,11 @@
 name: chocolatine
 on:
-  # push:
-  #   branches-ignore:
-  #     - "ga-ignore-*"
+  push:
+    branches-ignore:
+      - "ga-ignore-*"
 
-# env:
-#   MIRROR_URL: "git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-3-chocolatine-louis.desgree.git"
+env:
+  MIRROR_URL: "git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-3-chocolatine-louis.desgree.git"
 
 jobs:
   check_repo:
@@ -29,22 +29,22 @@ jobs:
           echo No unwanted files
         fi
 
-  # push_to_mirror:
-  #   needs: [check_if_compil]
-  #   if: ${{ github.event_name == 'push' }}
-  #   name: "Push to mirror"
-  #   runs-on: ubuntu-latest
+  push_to_mirror:
+    needs: [check_if_compil]
+    if: ${{ github.event_name == 'push' }}
+    name: "Push to mirror"
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: pixta-dev.repository-mirroring-actions@v1
-  #       with:
-  #         target_repo_url:
-  #           ${{ env.MIRROR_URL }}
-  #         ssh_private_key:
-  #           ${{ secrets.PRIVATE_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev.repository-mirroring-actions@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.PRIVATE_KEY }}
 
 # name: chocolatine
 
