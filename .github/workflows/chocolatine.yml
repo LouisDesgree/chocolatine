@@ -23,7 +23,7 @@ jobs:
           echo "::error file=$
           {FILE#./}, tile=UNwanted file detected::$
           {FILE#./}"
-        done:
+        done
         if [[ -n $UNWANTED_FILES]]
         then
           exit 1
