@@ -1,4 +1,5 @@
 name: chocolatine
+
 on:
   push:
     branches:
