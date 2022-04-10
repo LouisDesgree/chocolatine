@@ -1,49 +1,43 @@
 name: chocolatine
+
 on:
   push:
     branches-ignore:
       - "ga-ignore-*"
-    branches-ignore:
-      -"ga-ignore-*"
-
 env:
-  MIRROR_URL: "git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-3-chocolatine-louis.desgree.git"
-
+  MIRROR_URL: "git@github.com:DreamFailor/chocolatine-mirror.git"
 jobs:
   check_repo:
-    name: "check repository clean"
+    name: "clean repository"
     runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v3
-      -id: check repo
+      - uses: actions/checkout@v3
+      - id: check_repository_cleanliness
       run: |
-        UNWANTED_FILES=$
-        (find . -type f -not -path "./git/*" -wholename "*tmp/*" -or -name "*~" -or -name "*.o" -or -name "*.so" -or -name "*.gcno" -or -name "*.gdca" -or -name "*.gcov" -or -name "*pain_au_chocolat*")
-        for FLIES in $UNWANTED_FILES; do
-          echo "::error file=$
-          {FILE#./}, tile=UNwanted file detected::$
-          {FILE#./}"
+        UNWANTED_FILES=$(find . -type f -not -path "./git/*" -wholename "*tmp/*" 
+-or -name "*~" -or -name "*.o" -or -name "*.gcno" -or -name "*.gcda" 
+-or -name "*.gcov" -or -name "*pain_au_chocolat*")
+        for FILES in $UNWANTED_FILES; do
+          echo "::error file=${FILE#./}, title=Unwanted file detected::${FILE#./}"
         done
-        if [[ -n $UNWANTED_FILES]]
+        if [[ -n $UNWANTED_FILES ]]
         then
           exit 1
         else
           echo No unwanted files
         fi
-
   push_to_mirror:
     needs: [check_if_compil]
     if: ${{ github.event_name == 'push' }}
-    name: "Push to mirror"
-    runs-on: ubuntu-latest
-
+    name: "Push_on_mirror"
+    runs-on: ubuntu_latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: pixta-dev.repository-mirroring-actions@v1
-        with:
-          target_repo_url:
-            ${{ env.MIRROR_URL }}
-          ssh_private_key:
-            ${{ secrets.PRIVATE_KEY }}
+      with:
+        fetch-depth: 0
+      - uses: pixtaèdev/repository-mirroring-action@v1
+      with:
+        target_repo_url:
+          ${{ env.MIRROR_URL }}
+        ssh_private_key:
+          ${{ secrets.PRIVATE_KEY }}
