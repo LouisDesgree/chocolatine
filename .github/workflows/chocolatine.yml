@@ -2,9 +2,9 @@ name: chocolatine
 on:
   push:
     branches-ignore:
-      - "ga-ignore-*"
+      - ga-ignore-*
     branches-ignore:
-      -"ga-ignore-*"
+      -ga-ignore-*
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2026/B-DOP-200-PAR-2-3-chocolatine-louis.desgree.git"
